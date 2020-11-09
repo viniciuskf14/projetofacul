@@ -1,0 +1,185 @@
+package Exercicio;
+
+import java.util.Scanner;
+
+public class testando {
+
+	static String[] nomes = new String[10];
+	static double valor = 00.00;
+	static String pesquisarNome;
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+		int op;
+		
+		System.out.println("Escolha uma opção");
+		System.out.println("[1] Menu do Cliente");
+		System.out.println("[2] Menu do Cardápio");
+		op = s.nextInt();
+		
+		int i = 0;
+		int j = 0;
+		boolean continuar = true;
+		boolean continuar2 = true;
+		boolean continuar3 = true;		
+		char desejaContinuar = ' ';
+		char desejaContinuar2 = ' ';
+				
+		switch(op) {
+		case 1:
+			while(continuar){
+				System.out.println("Escolha uma opção");
+				System.out.println("[1] Cadastrar Cliente");
+				System.out.println("[2] Listar Cliente");
+				System.out.println("[3] Procura Cliente");
+				System.out.println("[4] Menu Principal");
+				op = s.nextInt();
+
+				switch(op) {
+				case 1:
+					continuar2 = true; 
+					cadastro (continuar2);
+
+					break;
+				case 2:
+					System.out.println("\nLISTA DE CLIENTES");
+					for (i = 0; i < nomes.length; i++) {
+						System.out.println(nomes[i]+"\n");						
+						}
+					break;
+				case 3: 
+					System.out.println("Pesquise o nome do cliente: ");
+					s.nextLine();
+					pesquisarNome = s.nextLine();
+					
+					for(i = 0; i < nomes.length; i++) {
+						
+						if(nomes[i] != null) {
+							break;
+						}
+						
+						if(pesquisarNome.contains(nomes[i])); {
+							System.out.println("Cliente encontrado! : " + nomes[i]);
+						}
+					}
+		
+					break;
+				default: System.out.println ("OPÇÃO INVALIDA.");
+				}
+			}
+		case 2:
+			int op3;
+
+			System.out.println("Escolha uma opção");
+			System.out.println("[1] Pratos");
+			System.out.println("[2] Sobremesa");
+			System.out.println("[3] Bebidas");
+			System.out.println("[4] Menu Principal");
+			op3 = s.nextInt();
+
+			switch (op3) {
+
+			case 1 : 
+			 pratos ();		
+			case 2: 
+				
+			}
+		break;
+		default: System.out.println ("OPÇÃO INVALIDA. REINICIE O PROGRAMA."); 
+
+		s.close();
+		}		
+		
+	}
+	
+	static void cadastro (boolean continuar2) {
+
+		Scanner scanner = new Scanner (System.in);
+		char desejaContinuar = ' ';	
+		int j = 0;
+		while(continuar2) {
+			System.out.println("Digite o nome do " + (j + 1)  +" º " + " cliente");
+			nomes[j] = scanner.nextLine();
+			j++;
+			
+			if (j<10) {
+				System.out.println("Deseja cadastrar um novo cliente? S/N?");						
+				desejaContinuar = scanner.nextLine().charAt(0);
+				
+				if( desejaContinuar == 'n' || desejaContinuar == 'N') {
+					continuar2 = false;
+				} else if (desejaContinuar == 's' || desejaContinuar == 'S') {
+					continuar2 = true;
+
+				} else {  
+					continuar2 = false;
+					System.out.println();
+					System.out.println("Opção invalida");
+					System.out.println();
+				}
+			} else {    
+			    break;
+		    }			
+		}			
+	}	
+        
+	static void pratos () {
+		double dinheiro, total;
+		boolean continuar3 = true;
+		char desejaContinuar2 = ' ';
+		
+		while (continuar3){
+			Scanner scanner = new Scanner (System.in);
+          
+			double vegetariano = 50.00, peixe = 40.00, frango = 50.00, carne = 80.00;
+			int op4 = 0;
+			System.out.println(" * Pratos * ");
+			System.out.println(" [1] Vegetarino R$ 50,00");
+			System.out.println(" [2] Peixe R$ 40,00");
+			System.out.println(" [3] Frango R5 50,00");
+			System.out.println(" [4] Carne R$ 80,00");
+			op4 = scanner.nextInt();
+
+			if (op4 == 1) {
+				valor = valor + vegetariano;
+
+			} else if (op4 == 2) {
+				valor = valor + peixe;	
+
+			} else if (op4 == 3) {
+				valor = valor + frango;
+			} else if (op4 == 4) {
+				valor = valor + carne;	
+			} else {
+				System.out.println();
+				System.out.println("OPÇÃO INVALIDA.");
+				System.out.println();            	
+				continuar3 = true;
+				break;}
+			
+			System.out.println("Mais alguma coisa? S/N");
+			desejaContinuar2 = scanner.next().charAt(0);
+			if( desejaContinuar2 == 'n' || desejaContinuar2 == 'N') {
+
+				System.out.println("Você gastou "+valor+"R$");
+				System.out.println("Quanto você vai pagar?");
+                dinheiro = scanner.nextDouble();
+
+                total = dinheiro - valor;
+
+		    if (total>=1) {
+					System.out.println("Você gastou "+valor+" Pagou "+dinheiro+" Recebeu um total de "+total+" De troco.");
+			}
+
+				continuar3 = false;
+			} else if (desejaContinuar2 == 's' || desejaContinuar2 == 'S') {
+				continuar3 = true;
+
+			} else {  
+				continuar3 = false;				
+				System.out.println("\n Opção invalida\n ");				
+			}
+		}
+	}
+}
