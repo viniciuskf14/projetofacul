@@ -1,0 +1,46 @@
+# projetofacul
+Repositório referente aos projetos da faculdade.
+
+
+package desafio;
+
+import java.util.Scanner;
+
+
+/* Implemente uma função que receba um número inteiro positivo e retorne o
+somatório de todos os valores inteiros divisíveis por 3 ou 5 que sejam inferiores ao
+número passado. */
+
+
+public class desafio01{
+
+public static void main (String args []) {
+		
+		  Scanner in = new Scanner(System.in);
+	   	  int num, soma = 0;		
+
+          
+		  //variaveis
+		 
+		
+		   System.out.println("Digite um número positivo: ");
+		          num = in.nextInt();
+		
+		   for (int i=0; i < num; i++) {
+			      
+			    if ( (i % 3 == 0) || (i % 5 ==0)) {
+
+			    	  soma += i; 
+			    	  }
+				
+		   
+        	//solução
+        		
+        }
+        	System.out.println("A soma dos valores é: " + soma);
+        	
+        	//resultado
+        }
+        
+		
+	}
